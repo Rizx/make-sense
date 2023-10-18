@@ -117,7 +117,7 @@ const EditorTopNavigationBar: React.FC<IProps> = (
                     getButtonWithTooltip(
                         'copy',
                         'copy annotation',
-                        'ico/zoom-in.png',
+                        'ico/copy.png',
                         'copy',
                         false,
                         undefined,
@@ -128,7 +128,7 @@ const EditorTopNavigationBar: React.FC<IProps> = (
                     getButtonWithTooltip(
                         'paste',
                         'paste annotation',
-                        'ico/zoom-in.png',
+                        'ico/paste.png',
                         'paste',
                         false,
                         undefined,
