@@ -15,6 +15,7 @@ import { AISelector } from '../../../store/selectors/AISelector';
 import { ISize } from '../../../interfaces/ISize';
 import { AIActions } from '../../../logic/actions/AIActions';
 import { Fade, styled, Tooltip, tooltipClasses, TooltipProps } from '@mui/material';
+import { ImageActions } from '../../../logic/actions/ImageActions';
 const BUTTON_SIZE: ISize = { width: 30, height: 30 };
 const BUTTON_PADDING: number = 10;
 
@@ -111,6 +112,30 @@ const EditorTopNavigationBar: React.FC<IProps> = (
 
     return (
         <div className={getClassName()}>
+            <div className='ButtonWrapper'>
+                {
+                    getButtonWithTooltip(
+                        'copy',
+                        'copy annotation',
+                        'ico/zoom-in.png',
+                        'copy',
+                        false,
+                        undefined,
+                        () => ImageActions.copy()
+                    )
+                }
+                {
+                    getButtonWithTooltip(
+                        'paste',
+                        'paste annotation',
+                        'ico/zoom-in.png',
+                        'paste',
+                        false,
+                        undefined,
+                        () => ImageActions.paste()
+                    )
+                }
+            </div>
             <div className='ButtonWrapper'>
                 {
                     getButtonWithTooltip(

@@ -30,7 +30,8 @@
     "noFallthroughCasesInSwitch": true,
     "types": [
       "vite/client",
-    ]
+    ],
+    "sourceMap": true,
   },
   "include": [
     "src"

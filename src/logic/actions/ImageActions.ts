@@ -5,6 +5,7 @@ import {
   updateActiveLabelId,
   updateActiveLabelNameId,
   updateImageDataById,
+  updateImageData,
 } from "../../store/labels/actionCreators";
 import { ViewPortActions } from "./ViewPortActions";
 import { EditorModel } from "../../staticModels/EditorModel";
@@ -20,6 +21,47 @@ import { LabelStatus } from "../../data/enums/LabelStatus";
 import { remove } from "lodash";
 
 export class ImageActions {
+  static imageDataOld :ImageData = null;
+
+  public static copy() {
+    console.log("copy");
+  }
+
+  public static paste() {
+    const labelNames = LabelsSelector.getLabelNames();
+    if (labelNames.length < 1) {
+      return;
+    }
+
+    const currentImageIndex: number = LabelsSelector.getActiveImageIndex();
+    const index : number = currentImageIndex - 1
+
+    const imageDataOld: ImageData = LabelsSelector.getImageDataByIndex(index);
+    const imageData: ImageData = LabelsSelector.getActiveImageData();
+    
+    console.log(imageDataOld);
+    console.log(imageData);
+
+    let newImageData :ImageData = {
+      ...imageData,
+      labelLines : imageDataOld.labelLines,
+      labelNameIds : imageDataOld.labelNameIds,
+      labelPoints : imageDataOld.labelPoints,
+      labelPolygons : imageDataOld.labelPolygons,
+      labelRects : imageDataOld.labelRects,
+    }
+
+    const imagesData: ImageData[] = LabelsSelector.getImagesData();
+    const newImagesData: ImageData[] = imagesData.map((data: ImageData) => {
+      if (data === imageData) {
+        return newImageData;
+      } 
+      return data;
+    });
+
+    store.dispatch(updateImageData(newImagesData))
+  }
+
   public static getPreviousImage(): void {
     const currentImageIndex: number = LabelsSelector.getActiveImageIndex();
     ImageActions.getImageByIndex(currentImageIndex - 1);
