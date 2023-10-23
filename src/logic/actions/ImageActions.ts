@@ -22,6 +22,14 @@ import { remove } from "lodash";
 
 export class ImageActions {
   static imageDataOld :ImageData = null;
+  
+  public static delete() {
+    const imageData: ImageData = LabelsSelector.getActiveImageData();
+    const imagesData: ImageData[] = LabelsSelector.getImagesData();
+    const newImagesData = imagesData.filter(data => data !== imageData);
+
+    store.dispatch(updateImageData(newImagesData))
+  }
 
   public static copy() {
     console.log("copy");

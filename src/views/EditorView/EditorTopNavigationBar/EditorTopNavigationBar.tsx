@@ -115,6 +115,19 @@ const EditorTopNavigationBar: React.FC<IProps> = (
             <div className='ButtonWrapper'>
                 {
                     getButtonWithTooltip(
+                        'delete',
+                        'delete image',
+                        'ico/trash.png',
+                        'delete',
+                        false,
+                        undefined,
+                        () => ImageActions.delete()
+                    )
+                }
+            </div>
+            <div className='ButtonWrapper'>
+                {
+                    getButtonWithTooltip(
                         'zoom-in',
                         'zoom in',
                         'ico/zoom-in.png',
