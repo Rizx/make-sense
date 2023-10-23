@@ -99,6 +99,18 @@ export class EditorContext extends BaseContext {
             }
         },
         {
+            keyCombo: PlatformUtil.isMac(window.navigator.userAgent) ? ["Alt", "c"] : ["Control", "c"],
+            action: (event: KeyboardEvent) => {
+                ImageActions.copy();
+            }
+        },
+        {
+            keyCombo: PlatformUtil.isMac(window.navigator.userAgent) ? ["Alt", "v"] : ["Control", "v"],
+            action: (event: KeyboardEvent) => {
+                ImageActions.duplicate();
+            }
+        },
+        {
             keyCombo: PlatformUtil.isMac(window.navigator.userAgent) ? ["Alt", "0"] : ["Control", "0"],
             action: (event: KeyboardEvent) => {
                 ImageActions.setActiveLabelOnActiveImage(0);

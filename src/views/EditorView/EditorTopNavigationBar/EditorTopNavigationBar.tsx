@@ -115,30 +115,6 @@ const EditorTopNavigationBar: React.FC<IProps> = (
             <div className='ButtonWrapper'>
                 {
                     getButtonWithTooltip(
-                        'copy',
-                        'copy annotation',
-                        'ico/copy.png',
-                        'copy',
-                        false,
-                        undefined,
-                        () => ImageActions.copy()
-                    )
-                }
-                {
-                    getButtonWithTooltip(
-                        'paste',
-                        'paste annotation',
-                        'ico/paste.png',
-                        'paste',
-                        false,
-                        undefined,
-                        () => ImageActions.paste()
-                    )
-                }
-            </div>
-            <div className='ButtonWrapper'>
-                {
-                    getButtonWithTooltip(
                         'zoom-in',
                         'zoom in',
                         'ico/zoom-in.png',
@@ -203,6 +179,41 @@ const EditorTopNavigationBar: React.FC<IProps> = (
                         crossHairVisible,
                         undefined,
                         crossHairOnClick
+                    )
+                }
+            </div>
+            <div className='ButtonWrapper'>
+                {
+                    getButtonWithTooltip(
+                        'copy',
+                        'copy annotation',
+                        'ico/copy.png',
+                        'copy',
+                        false,
+                        undefined,
+                        () => ImageActions.copy()
+                    )
+                }
+                {
+                    getButtonWithTooltip(
+                        'paste',
+                        'paste annotation',
+                        'ico/paste.png',
+                        'paste',
+                        false,
+                        undefined,
+                        () => ImageActions.paste()
+                    )
+                }
+                {
+                    getButtonWithTooltip(
+                        'duplicate',
+                        'duplicate annotation',
+                        'ico/duplicate.png',
+                        'duplicate',
+                        false,
+                        undefined,
+                        () => ImageActions.paste()
                     )
                 }
             </div>

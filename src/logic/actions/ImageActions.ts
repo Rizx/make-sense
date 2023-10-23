@@ -26,8 +26,12 @@ export class ImageActions {
   public static copy() {
     console.log("copy");
   }
-
+  
   public static paste() {
+    console.log("paste");
+  }
+
+  public static duplicate() {
     const labelNames = LabelsSelector.getLabelNames();
     if (labelNames.length < 1) {
       return;
@@ -39,16 +43,13 @@ export class ImageActions {
     const imageDataOld: ImageData = LabelsSelector.getImageDataByIndex(index);
     const imageData: ImageData = LabelsSelector.getActiveImageData();
     
-    console.log(imageDataOld);
-    console.log(imageData);
-
     let newImageData :ImageData = {
       ...imageData,
-      labelLines : imageDataOld.labelLines,
-      labelNameIds : imageDataOld.labelNameIds,
-      labelPoints : imageDataOld.labelPoints,
-      labelPolygons : imageDataOld.labelPolygons,
-      labelRects : imageDataOld.labelRects,
+      labelLines : [...imageDataOld.labelLines],
+      labelNameIds : [...imageDataOld.labelNameIds],
+      labelPoints : [...imageDataOld.labelPoints],
+      labelPolygons : [...imageDataOld.labelPolygons],
+      labelRects : [...imageDataOld.labelRects],
     }
 
     const imagesData: ImageData[] = LabelsSelector.getImagesData();
@@ -80,7 +81,7 @@ export class ImageActions {
     if (index < 0 || index > imageCount - 1) {
       return;
     } else {
-      ViewPortActions.setZoom(1);
+      // ViewPortActions.setZoom(1);
       store.dispatch(updateActiveImageIndex(index));
       store.dispatch(updateActiveLabelId(null));
     }
